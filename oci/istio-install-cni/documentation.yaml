@@ -5,4 +5,14 @@ description: >
   Install-cni is an image used for installing Istio's CNI plugin, which is used in the CNI component in Istio ambient mesh.
   Read more on the [project repo](https://github.com/istio/istio/tree/master/cni#overview).
 
+docker:
+  run_cmd: --args <named-args>
+  parameters: "
+    -d
+    --name istio-install-cni-container
+    -e TZ=UTC
+    "
+  run_conclusion: |
+    The Istio CNI plugin installer will run in detached mode to configure network plugin components.
+
 website: https://github.com/istio/istio
