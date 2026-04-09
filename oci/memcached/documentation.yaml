@@ -1,0 +1,41 @@
+version: 2
+
+application: Memcached
+website: https://memcached.org/
+source-code: https://github.com/canonical/memcached-rock
+issues: https://github.com/canonical/memcached-rock/issues
+description: |
+  Memcached is a high-performance, distributed memory object caching system.
+
+  This image is a chiseled Ubuntu rock. It contains a minimal Memcached
+  installation and the necessary tools to run and manage Memcached instances.
+
+docker:
+  parameters: >-
+    -p 11211:11211
+  run_conclusion: |
+    Access your Memcached server at `localhost:11211`
+
+    Get instance stats:
+
+    ```bash
+    printf "stats\r\n" | nc -q 1 -w 1 127.0.0.1 11211
+    ```
+
+    Write and read a value:
+
+    ```bash
+    printf "set my_key 0 60 11\r\nhello world\r\n" | nc -q 1 127.0.0.1 11211
+    printf "get my_key\r\n" | nc -q 1 127.0.0.1 11211 | grep "hello world"
+    ```
+
+config:
+  '`-p 11211:11211`':
+    type: port
+    description: Expose Memcached on `localhost:11211`
+  '`-e TZ=UTC`':
+    type: env
+    description: Timezone.
+  '`--args <memcached-args>`':
+    type: other
+    description: Specific `memcached` arguments
