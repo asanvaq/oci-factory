@@ -1,42 +1,18 @@
 version: 1
 upload:
   - source: canonical/istio-ztunnel-rock
-    commit: 74258e4025b86432d28e3af678f4300bd4fbcaf6
-    directory: 1.23.3
-    release:
-      1.23-24.04:
-        end-of-life: '2026-05-15T00:00:00Z'
-        risks:
-          - stable
-      1.23.3-24.04:
-        end-of-life: '2026-02-12T00:00:00Z'
-        risks:
-          - stable
-  - source: canonical/istio-ztunnel-rock
-    commit: 74258e4025b86432d28e3af678f4300bd4fbcaf6
-    directory: 1.24.3
-    release:
-      1.24-24.04:
-        end-of-life: '2026-05-15T00:00:00Z'
-        risks:
-          - stable
-      1.24.3-24.04:
-        end-of-life: '2026-02-12T00:00:00Z'
-        risks:
-          - stable
-  - source: canonical/istio-ztunnel-rock
-    commit: 74258e4025b86432d28e3af678f4300bd4fbcaf6
-    directory: 1.26.1
+    commit: f417dee77a948358e2bb82a5943a98463089a65b
+    directory: 1.29.0
     release:
       1-24.04:
-        end-of-life: '2026-05-15T00:00:00Z'
+        end-of-life: '2026-07-08T00:00:00Z'
         risks:
           - stable
-      1.26-24.04:
-        end-of-life: '2026-05-15T00:00:00Z'
+      1.29-24.04:
+        end-of-life: '2026-07-08T00:00:00Z'
         risks:
           - stable
-      1.26.1-24.04:
-        end-of-life: '2026-02-12T00:00:00Z'
+      1.29.0-24.04:
+        end-of-life: '2026-04-07T00:00:00Z'
         risks:
           - stable
