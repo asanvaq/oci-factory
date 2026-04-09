@@ -62,3 +62,5 @@ CVE-2026-34986
 CVE-2026-34040
 # go.opentelemetry.io/otel/sdk - opentelemetry-go: Path Hijacking via untrusted search path on macOS/Darwin
 CVE-2026-24051
+# go.opentelemetry.io/otel - opentelemetry-go: PATH hijacking via bare kenv command on BSD/Solaris platforms
+CVE-2026-39883
