@@ -6,7 +6,6 @@ description: |
   search and analytics suite that makes it easy to ingest, search, visualize, and analyze data.
   Developers build with OpenSearch for use cases such as application search,
   log analytics, data observability, data ingestion, and more.
-
 website: https://opensearch.org/
 issues: https://github.com/canonical/charmed-opensearch-rock
 source-code: https://github.com/canonical/charmed-opensearch-rock
