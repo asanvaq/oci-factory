@@ -2,8 +2,8 @@ version: 2
 
 application: litmuschaos-frontend
 website: https://litmuschaos.io/
-source-code: https://github.com/canonical/litmus-rocks
-issues: https://github.com/canonical/litmus-rocks/issues
+source-code: https://github.com/canonical/litmuschaos-frontend-rock
+issues: https://github.com/canonical/litmuschaos-frontend-rock/issues
 description: |
   Litmus frontend server is a component of the LitmusChaos solution, an open source
   platform used for chaos testing. It provides the web user interface for
