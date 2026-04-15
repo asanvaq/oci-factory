@@ -2,8 +2,8 @@ version: 2
 
 application: litmuschaos-authserver
 website: https://litmuschaos.io/
-source-code: https://github.com/canonical/litmus-rocks
-issues: https://github.com/canonical/litmus-rocks/issues
+source-code: https://github.com/canonical/litmuschaos-authserver-rock
+issues: https://github.com/canonical/litmuschaos-authserver-rock/issues
 description: |
   Litmus authentication server is a component of the LitmusChaos solution, an open
   source platform used for chaos testing.
