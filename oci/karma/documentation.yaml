@@ -1,35 +1,26 @@
-version: 1
-# --- OVERVIEW INFORMATION ---
+version: 2
 application: karma
-description: >
+description: |
   Karma is an alert dashboard for Prometheus Alertmanager.
   Alertmanager UI is useful for browsing alerts and managing silences,
-  but it’s lacking as a dashboard tool - karma aims to fill this gap.
-  Read more on the [official website](https://karma-dashboard.io/).
-# --- USAGE INFORMATION ---
+  but it is lacking as a dashboard tool - karma aims to fill this gap.
+website: https://karma-dashboard.io/
+issues: https://github.com/canonical/karma-rock
+source-code: https://github.com/canonical/karma-rock
+
 docker:
-  parameters:
-    - -p 8080:8080
-  access: Access your Karma instance at `http://localhost:8080`.
-parameters:
-  - type: -e
-    value: 'TZ=UTC'
+  parameters: >-
+    -e TZ=UTC
+    -p 8080:8080
+  run_cmd: --args <named-args>
+  run_conclusion: |
+    Karma starts on port 8080.
+    Access the dashboard at http://localhost:8080 after running with a port mapping, for example:
+    docker run -e TZ=UTC -p 8080:8080 ubuntu/karma:latest
+config:
+  '`-e TZ=UTC`':
+    type: env
     description: Timezone.
-  - type: -p
-    value: '8080:8080'
-    description: Expose Karma on `localhost:8080`.
-debug:
-  text: |
-    ### Debugging
-    
-    To debug the container:
-
-    ```bash
-    docker logs -f karma-container
-    ```
-
-    To get an interactive shell:
-
-    ```bash
-    docker exec -it karma-container /bin/bash
-    ```
+  '`-p 8080:8080`':
+    type: port
+    description: Expose Karma on localhost:8080.
