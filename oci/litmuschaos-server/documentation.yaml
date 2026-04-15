@@ -8,8 +8,8 @@ description: |
   
   This rock deploys the backend component, also known as the 'graphql server'.
 website: https://litmuschaos.io/
-source-code: https://github.com/canonical/litmus-rocks
-issues: https://github.com/canonical/litmus-rocks/issues
+source-code: https://github.com/canonical/litmuschaos-server-rock
+issues: https://github.com/canonical/litmuschaos-server-rock/issues
 
 docker:
   run_cmd: -d --name mongodb \
