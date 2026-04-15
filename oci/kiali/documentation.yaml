@@ -8,12 +8,13 @@ issues: https://github.com/canonical/kiali-rock
 source-code: https://github.com/canonical/kiali-rock
 
 docker:
-  
   run_cmd: --args <named-args>
   parameters: >-
     -e TZ=UTC
-    -p 20001:20001run_conclusion: |
+    -p 20001:20001
+  run_conclusion: |
     Kiali starts on port 20001.
+
 config:
   '`-e TZ=UTC`':
     type: env
