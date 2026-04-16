@@ -1,41 +1,31 @@
-version: 1
-# --- OVERVIEW INFORMATION ---
+version: 2
 application: parca
-description: >
+description: |
   Parca provides continuous profiling for analysis of CPU and memory usage, down to the line number
   and throughout time. Saving infrastructure cost, improving performance, and increasing reliability.
-  Read more on the [official documentation](https://www.parca.dev/)
 
   Please note that this repository is now holding a rock, not a
-  Dockerfile-based image. As such the entrypoint is now Pebble. Read more on
-  the [Rockcraft docs](https://canonical-rockcraft.readthedocs-hosted.com/en/latest/).
-# --- USAGE INFORMATION ---
+  Dockerfile-based image. As such the entrypoint is now Pebble.
+website: https://www.parca.dev/
+issues: https://github.com/canonical/parca-rock/issues
+source-code: https://github.com/canonical/parca-rock
+
 docker:
-  parameters:
-    - -p 7070:7070
-  access: Access your Parca instance at `http://localhost:7070`.
-parameters:
-  - type: -e
-    value: 'TZ=UTC'
+  run_cmd: --args <named-args>
+  parameters: >-
+    -e TZ=UTC
+  run_conclusion: |
+    Parca starts on port 7070.
+    Access your Parca instance at http://localhost:7070 after running with a port mapping, for example:
+    docker run -e TZ=UTC -p 7070:7070 -v /path/to/parca/config.yaml:/etc/parca/parca.yaml ubuntu/parca:latest
+
+config:
+  '`-e TZ=UTC`':
+    type: env
     description: Timezone.
-  - type: -p
-    value: '7070:7070'
-    description: Expose Parca on `localhost:7070`.
-  - type: -v
-    value: "/path/to/parca/config.yaml:/etc/parca/parca.yaml"
-    description: Local configuration file `parca.yaml`.
-debug:
-  text: |
-    ### Debugging
-    
-    To debug the container:
-
-    ```bash
-    docker exec -it parca-container pebble logs -f parca
-    ```
-
-    To get an interactive shell:
-
-    ```bash
-    docker exec -it parca-container /bin/bash
-    ```
+  '`-p 7070:7070`':
+    type: port
+    description: Expose Parca on localhost:7070.
+  '`-v /path/to/parca/config.yaml:/etc/parca/parca.yaml`':
+    type: mount
+    description: Local configuration file for Parca.
