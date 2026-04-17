@@ -10,4 +10,4 @@ source-code: https://github.com/canonical/istio-install-cni-rock
 
 docker:
   run_conclusion: |
-    The Istio CNI plugin installer will run in detached mode to configure network plugin components.
+    The Istio CNI plugin installer will run to configure network plugin components.
