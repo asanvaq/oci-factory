@@ -2,9 +2,7 @@ version: 2
 
 application: install-cni
 description: |
-  install-cni is a rock for install-cni maintained by [Canonical](https://canonical.com).
-
-  install-cni is used for installing Istio's CNI plugin, which is used in the CNI component in Istio ambient mesh.
+  Istio's CNI plugin is used in the CNI component in Istio ambient mesh.
   Read more on the [project repo](https://github.com/istio/istio/tree/master/cni#overview).
 website: https://istio.io/
 issues: https://github.com/canonical/istio-install-cni-rock/issues
