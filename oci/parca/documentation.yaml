@@ -20,12 +20,13 @@ docker:
     docker run -e TZ=UTC -p 7070:7070 -v /path/to/parca/config.yaml:/etc/parca/parca.yaml ubuntu/parca:latest
 
 config:
-  '`-e TZ=UTC`':
+  TZ:
     type: env
     description: Timezone.
-  '`-p 7070:7070`':
-    type: port
-    description: Expose Parca on localhost:7070.
-  '`-v /path/to/parca/config.yaml:/etc/parca/parca.yaml`':
+    default: 'UTC'
+  '`-v <path>:/etc/parca/parca.yaml`':
     type: mount
     description: Local configuration file for Parca.
+  '`-p <port>:7070`':
+    type: port
+    description: Expose Parca on localhost:7070.
