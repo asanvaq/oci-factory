@@ -5,12 +5,14 @@ website: https://litmuschaos.io/
 source-code: https://github.com/canonical/litmuschaos-authserver-rock
 issues: https://github.com/canonical/litmuschaos-authserver-rock/issues
 description: |
-  Litmus authentication server is a component of the LitmusChaos solution, an open
+  litmuschaos-authserver is a component of the LitmusChaos solution, an open
   source platform used for chaos testing.
   Read more in the [official documentation](https://github.com/litmuschaos/litmus)
+website: https://litmuschaos.io/
+issues: https://github.com/canonical/litmuschaos-authserver-rock/issues
+source-code: https://github.com/canonical/litmuschaos-authserver-rock
 
 docker:
-  run_cmd: --args <named-args>
   parameters: >-
     -p 3000:3000
   run_conclusion: |
@@ -19,29 +21,29 @@ docker:
     for production deployment instructions.
 
 config:
-  '`-e ADMIN_USERNAME=<user>`':
+  ADMIN_USERNAME:
     type: env
     description: Web UI admin username.
-  '`-e ADMIN_PASSWORD=<password>`':
+  ADMIN_PASSWORD:
     type: env
     description: Web UI admin password.
-  '`-e DB_SERVER=<db_address>`':
+  DB_SERVER:
     type: env
     description: Database server address.
-  '`-e DB_USER=<db_user>`':
+  DB_USER:
     type: env
     description: Database username.
-  '`-e DB_PASSWORD=<db_password>`':
+  DB_PASSWORD:
     type: env
     description: Database password.
-  '`-e REST_PORT=3000`':
+  REST_PORT:
     type: env
     description: REST API auth server port.
-    default: "3000"
-  '`-e GRPC_PORT=3030`':
+    default: '3000'
+  GRPC_PORT:
     type: env
     description: gRPC auth server port.
-    default: "3030"
-  '`-p 3000:3000`':
+    default: '3030'
+  '`-p <port>:3000`':
     type: port
     description: Expose the authentication server on localhost:3000.
