@@ -1,25 +1,21 @@
-version: 1
+version: 2
 
 application: ruby
-is_chiselled: true
 description: |
+  Ruby is a rock for ruby maintained by [Canonical](https://canonical.com).
+
   Ruby is a general-purpose programming language. It is interpreted, high-level,
   and dynamically typed. It supports multiple programming paradigms, including
   procedural, object-oriented, and functional programming.
-  
-  This chiseled Ruby rock contains only the core Ruby runtime, with the essential
-  dependencies to run simple Ruby applications. This rock should also be used as
-  a base if additional Ruby gems are needed.
+website: https://www.ruby-lang.org/
+issues: https://github.com/canonical/ruby-rock/issues
+source-code: https://github.com/canonical/ruby-rock
 
-debug:
-  text: |
-    ### Debugging
-
-    To debug the container:
-
-    ```bash
-    docker exec ruby-container pebble logs
-    ```
+docker:
+  run_cmd: --args <named-args>
+  parameters: -d --name ruby-container
+  run_conclusion: |
+    The container starts in detached mode.
 
 override_tracks:
   # Tracks with different tag than build-base
