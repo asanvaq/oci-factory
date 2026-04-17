@@ -2,7 +2,7 @@ version: 2
 
 application: Nginx
 description: |
-  Nginx ("engine X") is a high-performance web and reverse proxy server created by Igor Sysoev.
+  Nginx is a high-performance web and reverse proxy server created by Igor Sysoev.
   It can be used both as a standalone web server and as a proxy to reduce the load on back-end HTTP
   or mail servers. Read more on the [nginx website](https://www.f5.com/products/nginx).
 website: https://www.f5.com/products/nginx
@@ -10,7 +10,6 @@ issues: https://github.com/canonical/nginx-rock/issues
 source-code: https://github.com/canonical/nginx-rock
 
 docker:
-  run_cmd: --args <named-args>
   parameters: >-
     -p 8080:80
   run_conclusion: |
@@ -18,18 +17,22 @@ docker:
     Access your Nginx server at http://localhost:8080.
 
 config:
-  '`-p 8080:80`':
-    type: port
-    description: Expose Nginx on localhost:8080.
-  '`-v /local/path/to/website:/var/www/html:ro`':
+  TZ:
+    type: env
+    description: Timezone setting for the container.
+    default: 'UTC'
+  '`-v <path>:/var/www/html:ro`':
     type: mount
     description: Mount and serve a local website.
-  '`-v /path/to/conf.template:/etc/nginx/templates/conf.template`':
+  '`-v <path>:/etc/nginx/templates/conf.template`':
     type: mount
     description: Mount template files inside /etc/nginx/templates. They are processed and the results are placed at /etc/nginx/conf.d (for example, listen ${NGINX_PORT}; generates listen 80;).
-  '`-v /path/to/nginx.conf:/etc/nginx/nginx.conf:ro`':
+  '`-v <path>:/etc/nginx/nginx.conf:ro`':
     type: mount
     description: Local [configuration file](https://nginx.org/en/docs/) (try [this example](https://git.launchpad.net/~canonical-server/ubuntu-docker-images/+git/nginx/plain/examples/config/nginx.conf?h=1.18-22.04)).
+  '`-p <port>:80`':
+    type: port
+    description: Expose Nginx on localhost:8080.
 
 microk8s:
   deploy:
