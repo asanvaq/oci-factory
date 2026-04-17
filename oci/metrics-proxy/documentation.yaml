@@ -30,6 +30,10 @@ config:
     type: env
     description: Configures the timeout duration for scraping metrics from the pods.
     default: '9s'
+  PORT
+    type: env
+    description: The port on which the metrics-proxy listens for scrape requests.
+    default: '15090'
   '`-p <port>:15090`':
     type: port
     description: Port mapping for accessing the metrics-proxy aggregated metrics endpoint.
