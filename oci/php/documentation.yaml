@@ -2,7 +2,6 @@ version: 2
 
 application: PHP
 description: |
-  PHP is a rock for PHP maintained by [Canonical](https://canonical.com).
 
   PHP is a general-purpose scripting language well-suited for web development.
   Fast, flexible, and pragmatic, PHP powers everything from your blog to the most popular websites in the world.
