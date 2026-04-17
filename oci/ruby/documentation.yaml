@@ -2,8 +2,6 @@ version: 2
 
 application: ruby
 description: |
-  Ruby is a rock for ruby maintained by [Canonical](https://canonical.com).
-
   Ruby is a general-purpose programming language. It is interpreted, high-level,
   and dynamically typed. It supports multiple programming paradigms, including
   procedural, object-oriented, and functional programming.
@@ -12,10 +10,19 @@ issues: https://github.com/canonical/ruby-rock/issues
 source-code: https://github.com/canonical/ruby-rock
 
 docker:
-  run_cmd: --args <named-args>
-  parameters: -d --name ruby-container
+  parameters: -d
   run_conclusion: |
     The container starts in detached mode.
+
+config:
+  RUBYOPT:
+    type: env
+    description: Ruby options applied at startup.
+    default: "--disable-did_you_mean --disable-error_highlight --disable-syntax_suggest"
+  GEM_PATH:
+    type: env
+    description: Colon-separated list of paths used to locate installed gems.
+    default: "/usr/lib/ruby/gems/3.2.0/gems:/usr/share/rubygems-integration/all"
 
 override_tracks:
   # Tracks with different tag than build-base
