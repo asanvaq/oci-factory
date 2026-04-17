@@ -11,20 +11,18 @@ issues: https://github.com/canonical/git-sync-rock
 source-code: https://github.com/canonical/git-sync-rock
 
 docker:
-  
-  run_cmd: --args <named-args>
   parameters: >-
-    -e TZ=UTC 
+    -e TZ=UTC
     -p 1234:1234
-  
   run_conclusion: |
     The container starts git-sync using Pebble.
     When port mapping is enabled, the git-sync HTTP API is available at http://localhost:1234.
 
 config:
-  '`-e TZ=UTC`':
+  TZ:
     type: env
     description: Sets the timezone for the container runtime.
-  '`-p 1234:1234`':
+    default: 'UTC'
+  '`-p <port>:1234`':
     type: port
-    description: Expose the git sync HTTP API on `localhost:1234`.
+    description: Expose port 1234 on the host.
