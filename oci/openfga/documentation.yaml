@@ -25,25 +25,25 @@ docker:
     docker run --rm -p 8080:8080 -p 8081:8081 -p 3000:3000 -p 2112:2112 ubuntu/openfga:latest
 
 config:
-  '`-e OPENFGA_DATASTORE_ENGINE=postgres`':
+  OPENFGA_DATASTORE_ENGINE:
     type: env
     description: Datastore type, currently supports postgresql, mysql and sqlite (beta).
-  '`-e OPENFGA_DATASTORE_URI=postgres://postgres:password@postgres:5432/postgres?sslmode=disable`':
+  OPENFGA_DATASTORE_URI:
     type: env
     description: Database connection string.
-  '`-e OPENFGA_PLAYGROUND_ENABLED=true`':
+  OPENFGA_PLAYGROUND_ENABLED:
     type: env
     description: Allow playground UI.
-  '`-p 8080:8080`':
+  '`-p <port>:8080`':
     type: port
     description: HTTP API port.
-  '`-p 8081:8081`':
+  '`-p <port>:8081`':
     type: port
     description: gRPC API port.
-  '`-p 3000:3000`':
+  '`-p <port>:3000`':
     type: port
     description: Expose the playground UI.
-  '`-p 2112:2112`':
+  '`-p <port>:2112`':
     type: port
     description: Expose Prometheus metrics endpoint.
   '`openfga run`':
