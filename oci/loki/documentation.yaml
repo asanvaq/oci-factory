@@ -12,7 +12,6 @@ issues: https://github.com/canonical/loki-rock/issues
 source-code: https://github.com/canonical/loki-rock
 
 docker:
-  run_cmd: --args <named-args>
   parameters: >-
     -e TZ=UTC
     -p 3100:3100
@@ -23,15 +22,16 @@ docker:
     Access the instance at http://localhost:3100.
 
 config:
-  '`-e TZ=UTC`':
+  TZ:
     type: env
     description: Timezone.
-  '`-p 3100:3100`':
-    type: port
-    description: Expose Loki on localhost:3100.
-  '`-v /path/to/config/file:/etc/loki/local-config.yaml`':
+    default: 'UTC'
+  '`-v <path>:/etc/loki/local-config.yaml`':
     type: mount
     description: Local configuration file.
-  '`-v lokidata:/loki`':
+  '`-v <path>:/loki`':
     type: mount
     description: Persist data in a docker volume named lokidata.
+  '`-p <port>:3100`':
+    type: port
+    description: Expose Loki on localhost:3100.
