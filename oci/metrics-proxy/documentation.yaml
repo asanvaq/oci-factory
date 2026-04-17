@@ -25,7 +25,7 @@ config:
     default: 'UTC'
   POD_LABEL_SELECTOR:
     type: env
-    description: Specify labels to filter Kubernetes pods for metrics aggregation.
+    description: Specify labels to filter Kubernetes pods for metrics aggregation, using the format `foo=bar`.
   SCRAPE_TIMEOUT:
     type: env
     description: Configures the timeout duration for scraping metrics from the pods.
@@ -36,5 +36,5 @@ config:
     default: '15090'
   '`-p <port>:15090`':
     type: port
-    description: Port mapping for accessing the metrics-proxy aggregated metrics endpoint.
+    description: Port mapping for accessing the metrics-proxy aggregated metrics endpoint. Replace port 15090 if any other port is passed to the environmental variable `PORT`.
     
