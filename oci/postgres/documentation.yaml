@@ -1,10 +1,6 @@
 version: 2
 application: postgres
 description: |
-  Current PostgreSQL software rock Canonical based on Ubuntu.
-  Receives security updates and rolls to newer PostgreSQL software or Ubuntu release.
-  This repository is free to use and exempted from per-user rate limits.
-
   PostgreSQL is a powerful, open source object-relational database system.
   It has more than 20 years of active development and a proven architecture that
   has earned it a strong reputation for reliability, data integrity, and correctness.
@@ -13,7 +9,6 @@ issues: https://github.com/canonical/postgresql-rock/issues
 source-code: https://github.com/canonical/postgresql-rock
 
 docker:
-  run_cmd: --args <named-args>
   parameters: >-
     --detach
     -e TZ=UTC
@@ -21,8 +16,7 @@ docker:
     -p 30432:5432
   run_conclusion: |
     PostgreSQL starts on port 5432.
-    Access your PostgreSQL server at localhost:30432 after running with a port mapping, for example:
-    docker run --detach --name postgresql-container -e TZ=UTC -e POSTGRES_PASSWORD=My:S3cr3t -p 30432:5432 ubuntu/postgres:16-24.04_edge
+    Access your PostgreSQL server at localhost:30432 after running with the given port mapping.
 
 config:
   '`-e TZ=UTC`':
