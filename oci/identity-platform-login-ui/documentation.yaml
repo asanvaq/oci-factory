@@ -54,6 +54,6 @@ config:
     type: port
     description: Server API port.
   '`/usr/bin/identity-platform-login-ui serve`':
-    type: app
+    type: other
     description: >
       Launch Login UI web server(s) using environment variables.
