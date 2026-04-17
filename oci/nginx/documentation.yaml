@@ -26,13 +26,13 @@ config:
     description: Mount and serve a local website.
   '`-v <path>:/etc/nginx/templates/conf.template`':
     type: mount
-    description: Mount template files inside /etc/nginx/templates. They are processed and the results are placed at /etc/nginx/conf.d (for example, listen ${NGINX_PORT}; generates listen 80;).
+    description: Mount template files inside `/etc/nginx/templates`. They are processed and the results are placed at `/etc/nginx/conf.d` (for example, `listen ${NGINX_PORT};` generates `listen 80;`).
   '`-v <path>:/etc/nginx/nginx.conf:ro`':
     type: mount
     description: Local [configuration file](https://nginx.org/en/docs/) (try [this example](https://git.launchpad.net/~canonical-server/ubuntu-docker-images/+git/nginx/plain/examples/config/nginx.conf?h=1.18-22.04)).
   '`-p <port>:80`':
     type: port
-    description: Expose Nginx on localhost:8080.
+    description: Expose port 80 on the host.
 
 microk8s:
   deploy:
