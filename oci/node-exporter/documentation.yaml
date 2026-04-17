@@ -12,17 +12,18 @@ issues: https://github.com/canonical/node-exporter-rock/issues
 source-code: https://github.com/canonical/node-exporter-rock
 
 docker:
-  run_cmd: --args <named-args>
   parameters: >-
     -e TZ=UTC
+    -p 9100:9100
   run_conclusion: |
     The exporter starts and exposes Prometheus metrics.
-    Access the metrics endpoint at http://localhost:9100/metrics when running with a port mapping,.
+    Access the metrics endpoint at http://localhost:9100/metrics when running with a port mapping.
 
 config:
-  '`-e TZ=UTC`':
+  TZ:
     type: env
     description: Timezone.
-  '`-p 9100:9100`':
+    default: 'UTC'
+  '`-p <port>:9100`':
     type: port
     description: Expose the metrics endpoint on localhost:9100/metrics.
