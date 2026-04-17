@@ -1,14 +1,14 @@
 version: 2
 
 application: litmuschaos-frontend
-website: https://litmuschaos.io/
-source-code: https://github.com/canonical/litmuschaos-frontend-rock
-issues: https://github.com/canonical/litmuschaos-frontend-rock/issues
 description: |
-  Litmus frontend server is a component of the LitmusChaos solution, an open source
+  Litmuschaos-frontend is a component of the LitmusChaos solution, an open source
   platform used for chaos testing. It provides the web user interface for
   interacting with Litmus ChaosCenter services.
   Read more in the [official documentation](https://github.com/litmuschaos/litmus).
+website: https://litmuschaos.io/
+issues: https://github.com/canonical/litmuschaos-frontend-rock/issues
+source-code: https://github.com/canonical/litmuschaos-frontend-rock
 
 docker:
   run_cmd: --args <named-args>
@@ -20,6 +20,6 @@ docker:
     for production deployment instructions.
 
 config:
-  '`-p 8185:8185`':
+  '`-p <port>:8185`':
     type: port
     description: Expose the frontend on localhost:8185.
