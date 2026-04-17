@@ -1,6 +1,5 @@
-version: 1
+version: 2
 application: hydra
-is_chiselled: True
 description: |
   Ory Hydra is a hardened, OpenID Certified OAuth 2.0 Server and OpenID Connect Provider
   optimized for low-latency, high throughput, and low resource consumption.
@@ -8,41 +7,46 @@ description: |
   If you're not writing a basic web app but something that has to work on different devices, 
   that has machine-2-machine interaction, or enables third-party developers to use your API 
   (and pay for it), then this is what you're looking for.
+website: https://github.com/ory/hydra
+issues: https://github.com/canonical/hydra-rock/issues
+source-code: https://github.com/canonical/hydra-rock
+
 docker:
+  run_cmd: -d --name
   parameters:
     - -p 4444:4444
     - -p 4445:4445
-  access: Access your Hydra Public API at `http://localhost:4444`, Admin API at `http://localhost:4445`.
-parameters:
-  - type: -e
-    value: 'TRACING_ENABLED=true'
+  run_conclusion: |
+    Hydra starts with public and admin APIs exposed on ports 4444 and 4445.
+
+config:
+  TRACING_ENABLED:
+    type: env
     description: Tracing enablement.
-  - type: -e
-    value: 'TRACING_PROVIDER=otel'
+  TRACING_PROVIDER:
+    type: env
     description: Tracing protocol to be used.
-  - type: -e
-    value: 'TRACING_PROVIDERS_OTLP_INSECURE=true'
+  TRACING_PROVIDERS_OTLP_INSECURE:
+    type: env
     description: Allow Tracing via non TLS/insecure communication.
-  - type: -e
-    value: 'TRACING_PROVIDERS_OTLP_SAMPLING_SAMPLING_RATIO=1.0'
+  TRACING_PROVIDERS_OTLP_SAMPLING_SAMPLING_RATIO:
+    type: env
     description: Tracing sampling ratio.
-  - type: -e
-    value: 'TRACING_PROVIDERS_OTLP_SERVER_URL=tempo.server.io:4318'
+  TRACING_PROVIDERS_OTLP_SERVER_URL:
+    type: env
     description: Tracing server url and port.
-  - type: -p
-    value: '4444:4444'
-    description: Hydra Public API port.
-  - type: -p
-    value: '4445:4445'
-    description: Hydra Admin API port.
-  - type: -v
-    value: "/path/to/hydra/config.yaml:/hydra.yaml"
+  '`-v <path>:/hydra.yaml`':
+    type: mount
     description: >
       Hydra config contains all the information needed to successfully configure it as an OIDC
       Provider, see https://github.com/ory/hydra/blob/master/internal/config/config.yaml as a reference
-  - type: CMD
-    value: "hydra serve all --config /hydra.yaml"
+  '`-p <port>:4444`':
+    type: port
+    description: Hydra Public API port.
+  '`-p <port>:4445`':
+    type: port
+    description: Hydra Admin API port.
+  '`hydra serve all --config /hydra.yaml`':
+    type: app
     description: >
       Launch Hydra web server(s) using a mix of environment variables and the config mounted via volume.
-debug:
-  text: ""
