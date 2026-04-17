@@ -2,8 +2,6 @@ version: 2
 
 application: ruby
 description: |
-  Ruby is a rock for ruby maintained by [Canonical](https://canonical.com).
-
   Ruby is a general-purpose programming language. It is interpreted, high-level,
   and dynamically typed. It supports multiple programming paradigms, including
   procedural, object-oriented, and functional programming.
@@ -12,8 +10,7 @@ issues: https://github.com/canonical/ruby-rock/issues
 source-code: https://github.com/canonical/ruby-rock
 
 docker:
-  run_cmd: --args <named-args>
-  parameters: -d --name ruby-container
+  parameters: -d
   run_conclusion: |
     The container starts in detached mode.
 
