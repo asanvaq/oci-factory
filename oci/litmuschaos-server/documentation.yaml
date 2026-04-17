@@ -8,8 +8,8 @@ description: |
   
   This rock deploys the backend component, also known as the 'graphql server'.
 website: https://litmuschaos.io/
-source-code: https://github.com/canonical/litmuschaos-server-rock
 issues: https://github.com/canonical/litmuschaos-server-rock/issues
+source-code: https://github.com/canonical/litmuschaos-server-rock
 
 docker:
   run_cmd: -d --name mongodb \
@@ -26,68 +26,68 @@ docker:
     for production deployment instructions.    
 
 config:
-  '`-e VERSION=<version>`':
+  VERSION:
     type: env
     description: ID of the running version.
-  '`-e INFRA_DEPLOYMENTS=["app=chaos-exporter"]`':
+  INFRA_DEPLOYMENTS:
     type: env
     description: Deployment names for the infra components.
-  '`-e SUBSCRIBER_IMAGE=litmuschaos/litmusportal-subscriber:ci`':
+  SUBSCRIBER_IMAGE:
     type: env
     description: Image the chaoscenter uses to deploy the subscriber service.
-  '`-e EVENT_TRACKER_IMAGE=litmuschaos/litmusportal-event-tracker:ci`':
+  EVENT_TRACKER_IMAGE:
     type: env
     description: Image the chaoscenter uses to deploy the event-tracker service.
-  '`-e ARGO_WORKFLOW_CONTROLLER_IMAGE=litmuschaos/workflow-controller:v3.3.1`':
+  ARGO_WORKFLOW_CONTROLLER_IMAGE:
     type: env
     description: Image the chaoscenter uses to deploy the argo-workflow-controller service.
-  '`-e ARGO_WORKFLOW_EXECUTOR_IMAGE=litmuschaos/argoexec:v3.3.1`':
+  ARGO_WORKFLOW_EXECUTOR_IMAGE:
     type: env
     description: Image the chaoscenter uses to deploy the argo-workflow-executor service.
-  '`-e LITMUS_CHAOS_OPERATOR_IMAGE=litmuschaos/chaos-operator:ci`':
+  LITMUS_CHAOS_OPERATOR_IMAGE:
     type: env
     description: Image the chaoscenter uses to deploy the chaos-operator service.
-  '`-e LITMUS_CHAOS_RUNNER_IMAGE=litmuschaos/chaos-runner:ci`':
+  LITMUS_CHAOS_RUNNER_IMAGE:
     type: env
     description: Image the chaoscenter uses to deploy the chaos-runner service.
-  '`-e LITMUS_CHAOS_EXPORTER_IMAGE=litmuschaos/chaos-exporter:ci`':
+  LITMUS_CHAOS_EXPORTER_IMAGE:
     type: env
     description: Image the chaoscenter uses to deploy the chaos-exporter service.
-  '`-e CONTAINER_RUNTIME_EXECUTOR=k8sapi`':
+  CONTAINER_RUNTIME_EXECUTOR:
     type: env
     description: Runtime executor.
-  '`-e WORKFLOW_HELPER_IMAGE_VERSION=ci`':
+  WORKFLOW_HELPER_IMAGE_VERSION:
     type: env
     description: Image version tag for the workflow helper.
-  '`-e INFRA_COMPATIBLE_VERSIONS=ci`':
+  INFRA_COMPATIBLE_VERSIONS:
     type: env
     description: Image version tag for the infra workloads.
-  '`-e DEFAULT_HUB_BRANCH_NAME=master`':
+  DEFAULT_HUB_BRANCH_NAME:
     type: env
     description: Default branch name for GitOps repositories.
-  '`-e ADMIN_USERNAME=<user>`':
+  ADMIN_USERNAME:
     type: env
     description: Web UI admin username.
-  '`-e ADMIN_PASSWORD=<password>`':
+  ADMIN_PASSWORD:
     type: env
     description: Web UI admin password.
-  '`-e DB_SERVER=<db_address>`':
+  DB_SERVER:
     type: env
     description: Database server address.
-  '`-e DB_USER=<db_user>`':
+  DB_USER:
     type: env
     description: Database username.
-  '`-e DB_PASSWORD=<db_password>`':
+  DB_PASSWORD:
     type: env
     description: Database password.
-  '`-e REST_PORT=3000`':
+  REST_PORT:
     type: env
     description: REST API auth server port.
-    default: "3000"
-  '`-e GRPC_PORT=3030`':
+    default: '3000'
+  GRPC_PORT:
     type: env
     description: gRPC auth server port.
-    default: "3030"
-  '`-p 3000:3000`':
+    default: '3030'
+  '`-p <port>:3000`':
     type: port
     description: Expose the backend server on localhost:3000.
