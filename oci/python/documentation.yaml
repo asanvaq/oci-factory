@@ -13,8 +13,9 @@ issues: https://github.com/canonical/python-rock/issues
 source-code: https://github.com/canonical/python-rock
 
 docker:
+  run_cmd: exec python3 -c 'print("Hello World!")'
   run_conclusion: |
-    The container starts in detached mode.
+    The container prints "Hello World!" through the standard output.
 
 override_tracks:
   # Tracks with different tag than build-base
