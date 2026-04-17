@@ -11,7 +11,6 @@ issues: https://github.com/canonical/mysql-rock/issues
 source-code: https://github.com/canonical/mysql-rock
 
 docker:
-  run_cmd: --args <named-args>
   parameters: >-
     -e TZ=UTC
     -e MYSQL_ROOT_PASSWORD=My:S3cr3t
