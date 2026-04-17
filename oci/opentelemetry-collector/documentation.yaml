@@ -19,12 +19,13 @@ docker:
     Access your OpenTelemetry Collector instance at http://localhost:4318 after running with a port mapping.
 
 config:
-  '`-e TZ=UTC`':
+  TZ:
     type: env
     description: Timezone.
-  '`-p 4318:4318`':
-    type: port
-    description: Expose OpenTelemetry Collector on localhost:4318.
-  '`-v /path/to/config.yaml:/etc/otelcol/config.yaml`':
+    default: 'UTC'
+  '`-v <path>:/etc/otelcol/config.yaml`':
     type: mount
     description: Local configuration file for OpenTelemetry Collector.
+  '`-p <port>:4318`':
+    type: port
+    description: Expose OpenTelemetry Collector on localhost:4318.
