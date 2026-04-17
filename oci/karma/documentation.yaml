@@ -12,15 +12,15 @@ docker:
   parameters: >-
     -e TZ=UTC
     -p 8080:8080
-  run_cmd: --args <named-args>
   run_conclusion: |
     Karma starts on port 8080.
-    Access the dashboard at http://localhost:8080 after running with a port mapping, for example:
-    docker run -e TZ=UTC -p 8080:8080 ubuntu/karma:latest
+    Access the dashboard at http://localhost:8080 after running with a port mapping.
+
 config:
-  '`-e TZ=UTC`':
+  TZ:
     type: env
     description: Timezone.
-  '`-p 8080:8080`':
+    default: 'UTC'
+  '`-p <port>:8080`':
     type: port
-    description: Expose Karma on localhost:8080.
+    description: Expose port 8080 on the host.
