@@ -1,47 +1,31 @@
-version: 1
-# --- OVERVIEW INFORMATION ---
+version: 2
 application: rabbitmq
-description: >
+description: |
   RabbitMQ is a reliable and mature messaging and streaming broker, which is
   easy to deploy on cloud environments, on-premises, and on your local machine.
   It is currently used by millions worldwide.
-# --- USAGE INFORMATION ---
+website: https://www.rabbitmq.com/
+issues: https://github.com/canonical/rabbitmq-rock/issues
+source-code: https://github.com/canonical/rabbitmq-rock
+
 docker:
-  parameters:
-    - -p 5672:5672
-    - -p 15672:15672
-  access: Access your RabbitMQ instance using AMQP and HTTPS clients without TLS.
-
-parameters:
-  - type: -p
-    value: '5672:5672'
-    description: Expose RabbitMQ on `localhost:5672` for AMQP clients without TLS.
-  - type: -p
-    value: '5671:5671'
-    description: Expose RabbitMQ on `localhost:5671` for AMQP clients with TLS. 
-  - type: -p
-    value: '15672:15672'
-    description: Expose RabbitMQ on `localhost:15672` for HTTP clients without TLS.
-  - type: -p
-    value: '15671:15671'
-    description: Expose RabbitMQ on `localhost:15692` for HTTP clients UI with TLS.
-debug:
-  text: |  
-    ### Testing / Debugging
-
-    Configure the default user and password:
-
-    ```bash
-    docker exec rabbitmq-container /scripts/config-defaults.sh
-    docker exec rabbitmq-container pebble restart rabbitmq-server
-    ```
-
-    Note that after configuring the default user and password, this container
-    is no longer production-ready. Refer to the [official documentation]
-    (https://www.rabbitmq.com/docs/configure) for production deployments.
+  parameters: >-
+    -p 5672:5672
+    -p 15672:15672
+  run_conclusion: |
+    RabbitMQ starts and exposes AMQP and HTTP management interfaces.
+    Access AMQP on localhost:5672 and HTTP management UI on http://localhost:15672 after running with port mappings.
     
-    To query the node status:
-
-    ```bash
-    curl -u guest:guest http://localhost:15672/api/healthchecks/node
-    ```
+config:
+  '`-p <port>:5672`':
+    type: port
+    description: Expose RabbitMQ on localhost:5672 for AMQP clients without TLS.
+  '`-p <port>:5671`':
+    type: port
+    description: Expose RabbitMQ on localhost:5671 for AMQP clients with TLS.
+  '`-p <port>:15672`':
+    type: port
+    description: Expose RabbitMQ on localhost:15672 for HTTP clients without TLS.
+  '`-p <port>:15671`':
+    type: port
+    description: Expose RabbitMQ on localhost:15671 for HTTP clients UI with TLS.
