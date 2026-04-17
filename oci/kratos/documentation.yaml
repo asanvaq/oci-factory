@@ -1,7 +1,7 @@
 version: 2
 application: kratos
 description: |
-  Ory Kratos is the developer-friendly, security-hardened and battle-tested Identity,
+  kratos is the developer-friendly, security-hardened and battle-tested identity,
   User Management and Authentication system for the Cloud.
 
   The identity management server Ory Kratos enables you to implement user management,
@@ -15,7 +15,6 @@ website: https://www.ory.sh/docs/kratos
 issues: https://github.com/canonical/kratos-rock
 source-code: https://github.com/canonical/kratos-rock
 docker:
-  run_cmd: --args <named-args>
   parameters: >-
     -p 4433:4433
     -p 4434:4434
@@ -23,49 +22,47 @@ docker:
   run_conclusion: |
     Kratos starts both public and admin APIs.
     Access the public API at http://localhost:4433 and the admin API at http://localhost:4434.
-    Example:
-    docker run -p 4433:4433 -p 4434:4434 -v /path/to/Kratos/config.yaml:/kratos.yaml ubuntu/kratos:latest kratos serve all --config /kratos.yaml
-
+    
 config:
-  '`-e TRACING_ENABLED=true`':
+  TRACING_ENABLED:
     type: env
     description: Tracing enablement.
-  '`-e TRACING_PROVIDER=otel`':
+  TRACING_PROVIDER:
     type: env
     description: Tracing protocol to be used.
-  '`-e TRACING_PROVIDERS_OTLP_INSECURE=true`':
+  TRACING_PROVIDERS_OTLP_INSECURE:
     type: env
     description: Allow tracing via non TLS insecure communication.
-  '`-e TRACING_PROVIDERS_OTLP_SAMPLING_SAMPLING_RATIO=1.0`':
+  TRACING_PROVIDERS_OTLP_SAMPLING_SAMPLING_RATIO:
     type: env
     description: Tracing sampling ratio.
-  '`-e TRACING_PROVIDERS_OTLP_SERVER_URL=tempo.server.io:4318`':
+  TRACING_PROVIDERS_OTLP_SERVER_URL:
     type: env
     description: Tracing server URL and port.
-  '`-e SERVE_PUBLIC_BASE_URL=https://kratos.io/dev/path`':
+  SERVE_PUBLIC_BASE_URL:
     type: env
     description: Public URL Kratos will be served from.
-  '`-e DSN=postgres://user:pass@postgresql:5432/db`':
+  DSN:
     type: env
     description: Database connection string for PostgreSQL database.
-  '`-e HTTPS_PROXY=http://proxy.internal`':
+  HTTPS_PROXY:
     type: env
     description: HTTPS proxy used in air-gapped environments.
-  '`-e HTTP_PROXY=http://proxy.internal`':
+  HTTP_PROXY:
     type: env
     description: HTTP proxy used in air-gapped environments.
-  '`-e NO_PROXY=*.canonical.com`':
+  NO_PROXY:
     type: env
     description: Domain that needs to be excluded from the proxy, used in air-gapped environments.
-  '`-p 4433:4433`':
-    type: port
-    description: Kratos public API port.
-  '`-p 4434:4434`':
-    type: port
-    description: Kratos admin API port.
-  '`-v /path/to/Kratos/config.yaml:/kratos.yaml`':
+  '`-v <path>:/kratos.yaml`':
     type: mount
     description: Kratos config with settings needed to configure it as an OIDC provider. See https://www.ory.sh/docs/kratos/reference/configuration as a reference.
+  '`-p <port>:4433`':
+    type: port
+    description: Kratos public API port.
+  '`-p <port>:4434`':
+    type: port
+    description: Kratos admin API port.
   '`kratos serve all --config /kratos.yaml`':
     type: app
     description: Launch Kratos web servers using environment variables and the mounted config.
