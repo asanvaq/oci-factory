@@ -12,7 +12,6 @@ issues: https://github.com/canonical/nginx-prometheus-exporter-rock/issues
 source-code: https://github.com/canonical/nginx-prometheus-exporter-rock
 
 docker:
-  run_cmd: --args <named-args>
   parameters: >-
     -p 9113:9113
   run_conclusion: |
@@ -26,4 +25,4 @@ config:
     default: 'UTC'
   '`-p <port>:9113`':
     type: port
-    description: Expose the metrics endpoint at http://localhost:9113/metrics.
+    description: Expose port 9113 on the host.
