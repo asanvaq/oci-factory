@@ -20,9 +20,10 @@ docker:
     Access the metrics endpoint at http://localhost:9113/metrics.
 
 config:
-  '`-e TZ=UTC`':
+  TZ:
     type: env
     description: Timezone.
-  '`-p 9113:9113`':
+    default: 'UTC'
+  '`-p <port>:9113`':
     type: port
     description: Expose the metrics endpoint at http://localhost:9113/metrics.
