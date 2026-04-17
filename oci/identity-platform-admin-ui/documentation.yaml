@@ -139,6 +139,6 @@ config:
     type: port
     description: Server API port.
   '`/usr/bin/identity-platform-admin-ui serve`':
-    type: app
+    type: other
     description: >
       Launch Admin UI web server(s) using environment variables.
