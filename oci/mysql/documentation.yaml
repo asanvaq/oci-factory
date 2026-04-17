@@ -2,12 +2,7 @@ version: 2
 
 application: mysql
 description: |
-  Current MySQL™ software Docker Image [from Canonical](https://ubuntu.com/security/docker-images) based on Ubuntu.
-  Receives security updates and rolls to newer MySQL™ software or Ubuntu release.
-  This repository is free to use and exempted from per-user rate limits.
-
-  # About MySQL™
-  MySQL is a fast, stable and true multi-user, multi-threaded SQL database server.
+  mysql is a fast, stable and true multi-user, multi-threaded SQL database server.
   SQL (Structured Query Language) is the most popular database query language in the world.
   The main goals of MySQL are speed, robustness and ease of use.
   Read more on the [MySQL website](https://dev.mysql.com/doc/refman/8.0/en/).
@@ -26,39 +21,40 @@ docker:
     Access the server at localhost:30306.
 
 config:
-  '`-e TZ=UTC`':
+  TZ:
     type: env
     description: Timezone.
-  '`-e MYSQL_ROOT_PASSWORD=secret_for_root`':
+    default: 'UTC'
+  MYSQL_ROOT_PASSWORD:
     type: env
     description: Set the password for the root user. This option is mandatory and must not be empty.
-  '`-e MYSQL_PASSWORD=secret`':
+  MYSQL_PASSWORD:
     type: env
     description: Set the password for the MYSQL_USER user.
-  '`-e MYSQL_USER=john`':
+  MYSQL_USER:
     type: env
     description: Create a new user with the MYSQL_PASSWORD password. The user is created with superuser privileges.
-  '`-e MYSQL_DATABASE=db_test`':
+  MYSQL_DATABASE:
     type: env
     description: Set the name of the default database.
-  '`-e MYSQL_ALLOW_EMPTY_PASSWORD=yes`':
+  MYSQL_ALLOW_EMPTY_PASSWORD:
     type: env
     description: Set up a blank password for the root user. This is not recommended in production.
-  '`-e MYSQL_RANDOM_ROOT_PASSWORD=yes`':
+  MYSQL_RANDOM_ROOT_PASSWORD:
     type: env
     description: Generate a random password for the root user. The password is printed in the logs.
-  '`-e MYSQL_ONETIME_PASSWORD=yes`':
+  MYSQL_ONETIME_PASSWORD:
     type: env
     description: Set up a one-time password for the root user. A password change is required on first login.
-  '`-e MYSQL_INITSB_SKIP_TZINFO=yes`':
+  MYSQL_INITSB_SKIP_TZINFO:
     type: env
     description: Timezone data is automatically loaded via entrypoint script; set this variable to any non-empty value to disable it.
-  '`-p 30306:3306`':
-    type: port
-    description: Expose MySQL server on localhost:30306.
-  '`-v /path/to/data:/var/lib/mysql`':
+  '`-v <path>:/var/lib/mysql`':
     type: mount
     description: Persist data instead of initializing a new database every time you launch a new container.
-  '`-v /path/to/config/files/:/etc/mysql/mysql.conf.d/`':
+  '`-v <path>:/etc/mysql/mysql.conf.d/`':
     type: mount
     description: Local configuration files for MySQL.
+  '`-p <port>:3306`':
+    type: port
+    description: Expose MySQL server on localhost:30306.
