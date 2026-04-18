@@ -1,8 +1,12 @@
-version: 1
-
+version: 2
 application: airflow
-description: >
-  Apache Airflow is a platform to programmatically author, schedule, and monitor workflows. This rock ("airflow") packages Airflow built from source on Ubuntu with Python and a wide set of providers.
+description: |
+  Apache Airflow is a platform to programmatically author, schedule,
+  and monitor workflows. This rock ("airflow") packages Airflow built
+  from source on Ubuntu with Python and a wide set of providers.
+website: https://airflow.apache.org
+issues: https://github.com/canonical/airflow-rocks/issues
+source-code: https://github.com/canonical/airflow-rocks
 
 docker:
   parameters:
@@ -10,108 +14,64 @@ docker:
     - -e AIRFLOW_HOME=/opt/airflow
     - -v /path/to/dags:/opt/airflow/dags
     - -v /path/to/airflow.cfg:/opt/airflow/airflow.cfg
-  access: |
-    ### Entrypoint and Pebble
+  run_conclusion: |
+    airflow starts running `airflow standalone`, which initialises a local
+    metadata DB, creates a default admin user, and starts the webserver and scheduler.
 
-    The rock uses [Pebble](https://documentation.ubuntu.com/pebble/), a lightweight service manager. Pebble is PID 1 in the container, and it supervises the Airflow service defined in the rock.
-
-    #### Airflow service
-
-    The `airflow` service is configured with:
-      ```
-      command: /usr/bin/airflow standalone
-      startup: enabled
-      ```
-
-    `airflow standalone` initializes a local metadata DB, creates a default admin user, and starts the webserver, scheduler, and other core components in one process group (intended for development).
-
-    #### Configuration & State
-
-    - Runtime state (AIRFLOW_HOME) lives at `/opt/airflow`. This includes `airflow.cfg`, `airflow.db` (Database by default for standalone), logs, and `dags/`.
-    - It is required to mount volumes to persist that data or to inject custom dags.
-      For example:
-        `-v ./dags:/opt/airflow/dags`
-        `-v ./airflow.cfg:/opt/airflow/airflow.cfg`
-
-    #### Providers
-
-    The rock is built from Airflow with many providers pre-installed (Amazon, GCP, Kubernetes, MySQL, Postgres, etc.), so common integrations work out of the box without requiring `pip install` inside the container.
-
-    ### Full Configuration Reference:
-    Airflow offers a large number of configuration options that can be set via environment variables or `airflow.cfg`.
-    For the complete list of configurable settings, consult the official [configuration reference](https://airflow.apache.org/docs/apache-airflow/stable/configurations-ref.html)
-
-parameters:
-  - type: -e
-    value: 'AIRFLOW_HOME=/opt/airflow'
-    description: >
-      Root directory for Airflow state inside the container (DB, logs, dags, config).
-      The rock sets this to /opt/airflow.
-  - type: -e
-    value: 'AIRFLOW__CORE__LOAD_EXAMPLES=false'
-    description: >
-      Whether to load the DAG examples that ship with Airflow. It’s good to get started, but you probably want to set this to False in a production environment
-  - type: -e
-    value: 'AIRFLOW__CORE__EXECUTOR=LocalExecutor'
-    description: >
-      The executor class that airflow should use. Choices include LocalExecutor, CeleryExecutor, KubernetesExecutor or the full import path to the class when using a custom executor.
-  - type: -e
-    value: 'AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@db:5432/airflow'
-    description: >
-      SQLAlchemy connection string for the Airflow metadata DB. `airflow standalone` defaults to local SQLite, but for production you generally want Postgres or MySQL. Override this to point at an external DB.
-  - type: e
-    value: 'AIRFLOW__CORE__AUTH_MANAGER=airflow.api_fastapi.auth.managers.simple.simple_auth_manager.SimpleAuthManager'
-    description: >
-      For more information on available authentication managers and the configuration options they require, refer to the official [Airflow Auth Manager documentation](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/auth-manager/index.html)
-  - type: -p
-    value: '8080:8080'
-    description: >
-      Airflow Webserver UI (HTTP).
-      This is what you open in the browser.
-      These are documented in the [upstream Helm chart](https://airflow.apache.org/docs/helm-chart/stable/parameters-ref.html).
-  - type: -p
-    value: '8794:8794'
-    description: >
-      Triggerer log server port. Used for log streaming and collection by the Airflow triggerer.
-      Officially defined in the Airflow Helm Chart as `ports.triggererLogs`.
-      These are documented in the [upstream Helm chart](https://airflow.apache.org/docs/helm-chart/stable/parameters-ref.html).
-  - type: -p
-    value: '8793:8793'
-    description: >
-       Worker log server port. Used for log streaming and collection by Airflow workers in distributed setups.
-       Officially defined in the Airflow Helm Chart as `ports.workerLogs`.
-       These are documented in the [upstream Helm chart](https://airflow.apache.org/docs/helm-chart/stable/parameters-ref.html).
-  - type: -v
-    value: '/path/to/dags:/opt/airflow/dags'
-    description: >
-      Mount your DAGs from the host so you can iterate without rebuilding the rock.
-      Anything in /opt/airflow/dags will be auto-discovered.
-  - type: -v
-    value: '/path/to/logs:/opt/airflow/logs'
-    description: >
-      Persist task logs outside the container (useful for debugging and restarts).
-  - type: -v
-    value: '/path/to/airflow.cfg:/opt/airflow/airflow.cfg'
-    description: >
-      Inject a custom airflow.cfg instead of the auto-generated one from
-      `airflow standalone`.
-  - type: -v
-    value: '/path/to/requirements.txt:/requirements.txt'
-    description: >
-      (Optional) If you extend this rock and want extra Python deps at runtime,
-      you can mount and install them in an init hook / derived image.
-  - type: -e
-    value: 'AIRFLOW__API__SECRET_KEY=change-me'
-    description: >
-      Secret key used to run your api server. It should be as random as possible. However, when running more than 1 instances of the api, make sure all of them use the same secret_key otherwise one of them will error with “CSRF session token is missing”.
-  - type: -e
-    value: 'AIRFLOW__API__BASE_URL=https://airflow.example.com'
-    description: >
-      The base url of the API server.
-  - type: -e
-    value: 'AIRFLOW__CORE__MAX_ACTIVE_TASKS_PER_DAG=16'
-    description: >
-      The maximum number of task instances allowed to run concurrently in each dag run.
+config:
+  AIRFLOW_HOME:
+    type: env
+    description: airflow is configurable with a root directory for state inside the container (DB, logs, dags, config).
+    default: /opt/airflow
+  AIRFLOW__CORE__LOAD_EXAMPLES:
+    type: env
+    description: airflow is configurable to load or skip the example DAGs that ship with Airflow.
+    default: 'false'
+  AIRFLOW__CORE__EXECUTOR:
+    type: env
+    description: airflow is configurable with an executor class (LocalExecutor, CeleryExecutor, KubernetesExecutor, or a custom import path).
+    default: LocalExecutor
+  AIRFLOW__DATABASE__SQL_ALCHEMY_CONN:
+    type: env
+    description: airflow is configurable with a SQLAlchemy connection string for the metadata DB; standalone defaults to SQLite but production deployments typically use Postgres or MySQL.
+    default: postgresql+psycopg2://airflow:airflow@db:5432/airflow
+  AIRFLOW__CORE__AUTH_MANAGER:
+    type: env
+    description: airflow is configurable with an authentication manager class; see the Airflow Auth Manager documentation for available managers and their options.
+    default: airflow.api_fastapi.auth.managers.simple.simple_auth_manager.SimpleAuthManager
+  AIRFLOW__API__SECRET_KEY:
+    type: env
+    description: airflow is configurable with a secret key for the API server; must be the same across all instances to avoid CSRF token errors.
+    default: change-me
+  AIRFLOW__API__BASE_URL:
+    type: env
+    description: airflow is configurable with the base URL of the API server.
+    default: https://airflow.example.com
+  AIRFLOW__CORE__MAX_ACTIVE_TASKS_PER_DAG:
+    type: env
+    description: airflow is configurable with the maximum number of concurrently running task instances per DAG run.
+    default: '16'
+  '`-v <path>:/opt/airflow/dags`':
+    type: mount
+    description: airflow is configurable with a host DAGs directory mounted so changes are picked up without rebuilding the image.
+  '`-v <path>:/opt/airflow/logs`':
+    type: mount
+    description: airflow is configurable with a host logs directory to persist task logs across container restarts.
+  '`-v <path>:/opt/airflow/airflow.cfg`':
+    type: mount
+    description: airflow is configurable with a custom airflow.cfg mounted to override the auto-generated configuration.
+  '`-v <path>:/requirements.txt`':
+    type: mount
+    description: airflow is configurable with a requirements file mounted to install extra Python dependencies at runtime.
+  '`-p <port>:8080`':
+    type: port
+    description: airflow is configurable to expose the Airflow webserver UI (HTTP).
+  '`-p <port>:8794`':
+    type: port
+    description: airflow is configurable to expose the triggerer log server port for log streaming.
+  '`-p <port>:8793`':
+    type: port
+    description: airflow is configurable to expose the worker log server port for log streaming in distributed setups.
 
 override_tracks:
   3-24.04:
