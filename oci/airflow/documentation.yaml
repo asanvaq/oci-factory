@@ -22,7 +22,7 @@ config:
   AIRFLOW_HOME:
     type: env
     description: airflow is configurable with a root directory for state inside the container (DB, logs, dags, config).
-    default: /opt/airflow
+    default: '/opt/airflow'
   AIRFLOW__CORE__LOAD_EXAMPLES:
     type: env
     description: airflow is configurable to load or skip the example DAGs that ship with Airflow.
@@ -30,23 +30,23 @@ config:
   AIRFLOW__CORE__EXECUTOR:
     type: env
     description: airflow is configurable with an executor class (LocalExecutor, CeleryExecutor, KubernetesExecutor, or a custom import path).
-    default: LocalExecutor
+    default: 'LocalExecutor'
   AIRFLOW__DATABASE__SQL_ALCHEMY_CONN:
     type: env
     description: airflow is configurable with a SQLAlchemy connection string for the metadata DB; standalone defaults to SQLite but production deployments typically use Postgres or MySQL.
-    default: postgresql+psycopg2://airflow:airflow@db:5432/airflow
+    default: 'postgresql+psycopg2://airflow:airflow@db:5432/airflow'
   AIRFLOW__CORE__AUTH_MANAGER:
     type: env
     description: airflow is configurable with an authentication manager class; see the Airflow Auth Manager documentation for available managers and their options.
-    default: airflow.api_fastapi.auth.managers.simple.simple_auth_manager.SimpleAuthManager
+    default: 'airflow.api_fastapi.auth.managers.simple.simple_auth_manager.SimpleAuthManager'
   AIRFLOW__API__SECRET_KEY:
     type: env
     description: airflow is configurable with a secret key for the API server; must be the same across all instances to avoid CSRF token errors.
-    default: change-me
+    default: 'change-me'
   AIRFLOW__API__BASE_URL:
     type: env
     description: airflow is configurable with the base URL of the API server.
-    default: https://airflow.example.com
+    default: 'https://airflow.example.com'
   AIRFLOW__CORE__MAX_ACTIVE_TASKS_PER_DAG:
     type: env
     description: airflow is configurable with the maximum number of concurrently running task instances per DAG run.
