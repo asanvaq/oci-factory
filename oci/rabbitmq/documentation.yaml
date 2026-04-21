@@ -23,6 +23,7 @@ docker:
     
     
     
+    
 config:
   '`-p <port>:5672`':
     type: port
