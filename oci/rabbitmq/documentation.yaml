@@ -36,17 +36,17 @@ config:
   '`-p <port>:15671`':
     type: port
     description: Expose port 15671 on the host for HTTP clients UI with TLS.
-  '-v <path>:/etc/rabbitmq/rabbitmq.conf`:
+  '`-v <path>:/etc/rabbitmq/rabbitmq.conf`':
     type: mount
     description: Local [main configuration file](https://www.rabbitmq.com/docs/configure#config-file).
-  '-v <path>:/etc/rabbitmq/conf.d`:
+  '`-v <path>:/etc/rabbitmq/conf.d`':
     type: mount
     description: Local [configuration directory](https://www.rabbitmq.com/docs/configure#config-confd-directory).
-  'RABBITMQ_CONFIG_FILE`:
+  '`RABBITMQ_CONFIG_FILE`':
     type: env
     description: Main RabbitMQ config file path.
     default: `/etc/rabbitmq/rabbitmq.conf`
-  'RABBITMQ_CONFIG_FILES`:
+  '`RABBITMQ_CONFIG_FILES`':
     type: env
     description: Path to a directory of RabbitMQ configuration files.
     default: `/etc/rabbitmq/conf.d`
