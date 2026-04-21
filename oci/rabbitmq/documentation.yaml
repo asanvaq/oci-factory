@@ -20,10 +20,19 @@ docker:
     defined configuration file is applied in the container. For demonstration purposes, we enable
     access for the default `guest` user from a non-localhost network by running the following
     commands:
+
+    ```bash
+    docker exec rabbitmq-container /scripts/config-defaults.sh
+    docker exec rabbitmq-container pebble restart rabbitmq-server
+    ```
     
-    
-    
-    
+    The AMQP and HTTP clients will be accessible with the default username and
+    password combination `guest:guest`. For example, 
+
+    ```bash
+    curl -u guest:guest http://localhost:15672/api/healthchecks/node
+    ```
+
 config:
   '`-p <port>:5672`':
     type: port
