@@ -45,8 +45,8 @@ config:
   '`RABBITMQ_CONFIG_FILE`':
     type: env
     description: Main RabbitMQ config file path.
-    default: `/etc/rabbitmq/rabbitmq.conf`
+    default: '`/etc/rabbitmq/rabbitmq.conf`'
   '`RABBITMQ_CONFIG_FILES`':
     type: env
     description: Path to a directory of RabbitMQ configuration files.
-    default: `/etc/rabbitmq/conf.d`
+    default: '`/etc/rabbitmq/conf.d`'
