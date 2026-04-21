@@ -14,18 +14,39 @@ docker:
     -p 15672:15672
   run_conclusion: |
     RabbitMQ starts and exposes AMQP and HTTP management interfaces.
-    Access AMQP on localhost:5672 and HTTP management UI on http://localhost:15672 after running with port mappings.
+    Access AMQP on `localhost:5672` and HTTP management UI on `http://localhost:15672`.
+    
+    Note that the clients provided by RabbitMQ won't be accessible by default unless a properly
+    defined configuration file is applied in the container. For demonstration purposes, we enable
+    access for the default `guest` user from a non-localhost network by running the following
+    commands:
+    
+    
     
 config:
   '`-p <port>:5672`':
     type: port
-    description: Expose RabbitMQ on localhost:5672 for AMQP clients without TLS.
+    description: Expose port 5672 on the host for AMQP clients without TLS.
   '`-p <port>:5671`':
     type: port
-    description: Expose RabbitMQ on localhost:5671 for AMQP clients with TLS.
+    description: Expose port 5671 on the host for AMQP clients with TLS.
   '`-p <port>:15672`':
     type: port
-    description: Expose RabbitMQ on localhost:15672 for HTTP clients without TLS.
+    description: Expose port 15672 on the host for HTTP clients without TLS.
   '`-p <port>:15671`':
     type: port
-    description: Expose RabbitMQ on localhost:15671 for HTTP clients UI with TLS.
+    description: Expose port 15671 on the host for HTTP clients UI with TLS.
+  '-v <path>:/etc/rabbitmq/rabbitmq.conf`:
+    type: mount
+    description: Local [main configuration file](https://www.rabbitmq.com/docs/configure#config-file).
+  '-v <path>:/etc/rabbitmq/conf.d`:
+    type: mount
+    description: Local [configuration directory](https://www.rabbitmq.com/docs/configure#config-confd-directory).
+  'RABBITMQ_CONFIG_FILE`:
+    type: env
+    description: Main RabbitMQ config file path.
+    default: `/etc/rabbitmq/rabbitmq.conf`
+  'RABBITMQ_CONFIG_FILES`:
+    type: env
+    description: Path to a directory of RabbitMQ configuration files.
+    default: `/etc/rabbitmq/conf.d`
