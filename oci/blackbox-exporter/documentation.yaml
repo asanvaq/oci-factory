@@ -12,7 +12,7 @@ docker:
     -p 9115:9115
   run_conclusion: |
     Blackbox Exporter starts on port 9115.
-    Access the service at http://localhost:9115 after running.
+    Access the Blackbox Exporter instance at `http://localhost:9115`.
 
 config:
   TZ:
@@ -21,7 +21,7 @@ config:
     default: 'UTC'
   '`-v <path>:/etc/blackbox_exporter/config.yml`':
     type: mount
-    description: Local configuration file config.yaml.
+    description: Local configuration file `config.yaml`. 
   '`-p <port>:9115`':
     type: port
-    description: Expose port 9115 on the local host.
+    description: Expose port 9115 on the host.
