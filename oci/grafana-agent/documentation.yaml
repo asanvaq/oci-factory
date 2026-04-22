@@ -16,7 +16,7 @@ docker:
     -p 12345:12345
   run_conclusion: |
     Grafana Agent starts and listens on port 12345.
-    Access the endpoint at http://localhost:12345 after running.
+    Access the Grafana Agent instance at `http://localhost:12345`.
 
 config:
   TZ:
@@ -28,4 +28,4 @@ config:
     description: Local configuration file agent.yaml.
   '`-p <port>:12345`':
     type: port
-    description: Expose port 12345 on the local host.
+    description: Expose port 12345 on the host.
