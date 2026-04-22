@@ -18,7 +18,7 @@ docker:
     -p 9093:9093
   run_conclusion: |
     Alertmanager starts on port 9093.
-    Access your Alertmanager instance at http://localhost:9093 after running with the required mappings.
+    Access your Alertmanager instance at `http://localhost:9093`.
 
 config:
   TZ:
