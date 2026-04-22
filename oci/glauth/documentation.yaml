@@ -15,13 +15,12 @@ issues: https://github.com/canonical/glauth-rock/issues
 source-code: https://github.com/canonical/glauth-rock
 
 docker:
-  parameters:
-    - -p 3893:3893  # ldap
-    - -p 3894:3894  # ldaps
-    - -p 5555:5555  # ui and prometheus metrics
+parameters: >-
+  -p 3893:3893  # ldap
+  -p 3894:3894  # ldaps
+  -p 5555:5555  # ui and prometheus metrics
   run_conclusion: |
     GLAuth starts and serves LDAP on port 3893.
-    Run it with a mounted config file and published ports.
 
 config:
   '`-v <path>:/glauth.cfg`':
@@ -31,13 +30,13 @@ config:
       server, see https://github.com/glauth/glauth/blob/master/v2/sample-simple.cfg as a reference
   '`-p <port>:3893`':
     type: port
-    description: LDAP port.
+    description: Expose LDAP port 3893 on the host.
   '`-p <port>:3894`':
     type: port
-    description: LDAPS port.
+    description: Expose LDAPS port 3894 on the host.
   '`-p <port>:5555`':
     type: port
-    description: UI and metrics port.
-  '`glauth -c /glauth.cfg`':
-    type: app
+    description: Expose UI and metrics port 5555 on the host.
+  '`--args glauth -- -c /glauth.cfg \;`':
+    type: other
     description: Launch GLAuth server with a set config.
