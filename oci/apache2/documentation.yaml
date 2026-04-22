@@ -13,7 +13,7 @@ docker:
     -p 8080:80
   run_conclusion: |
     Apache2 starts and serves HTTP traffic on port 80.
-    Access your Apache2 server at http://localhost:8080 after running with a port mapping.
+    Access the Apache2 server at `http://localhost:8080`.
 
 config:
   '`-p <port>:80`':
@@ -25,7 +25,6 @@ config:
   '`-v <path>:/etc/apache2/apache2.conf:ro`':
     type: mount
     description: Local [configuration file](https://httpd.apache.org/docs/2.4) `apache2.conf` (try [this example](https://git.launchpad.net/~ubuntu-docker-images/ubuntu-docker-images/+git/apache2/plain/examples/config/apache2.conf?h=2.4-22.04))
-    
 microk8s:
   deploy:
     link: https://git.launchpad.net/~ubuntu-docker-images/ubuntu-docker-images/+git/apache2/plain/examples/apache2-deployment.yml?h=2.4-22.04
