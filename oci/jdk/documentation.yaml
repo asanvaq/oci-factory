@@ -16,8 +16,13 @@ source-code: https://github.com/canonical/jdk-rock
 docker:
   parameters: >-
     --rm
+    -v /path/to/dir/contains/HelloWorld.java:/work
+    -w /work
+  run_cmd: exec java HelloWorld.java
   run_conclusion: |
-    jdk starts and runs the Java command inside the container.
+    JDK starts and runs the Hello World Java application as defined below, and outputs `"Hello, World"` to the terminal.
+    
+    
 
 config:
   TZ:
