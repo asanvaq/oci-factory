@@ -9,10 +9,7 @@ issues: https://github.com/canonical/karma-rock
 source-code: https://github.com/canonical/karma-rock
 
 docker:
-  parameters: >-
-    -e TZ=UTC
-    -p 8080:8080
-  run_cmd: -d
+  parameters: '-p 8080:8080'
   run_conclusion: Access the Karma dashboard at `http://localhost:8080`.
 
 config:
