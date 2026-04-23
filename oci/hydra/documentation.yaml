@@ -12,10 +12,10 @@ issues: https://github.com/canonical/hydra-rock/issues
 source-code: https://github.com/canonical/hydra-rock
 
 docker:
-  run_cmd: -d --name
-  parameters:
-    - -p 4444:4444
-    - -p 4445:4445
+  run_cmd: -d
+  parameters: >-
+    -p 4444:4444
+    -p 4445:4445
   run_conclusion: |
     Hydra starts with public and admin APIs exposed on ports 4444 and 4445.
 
@@ -42,11 +42,11 @@ config:
       Provider, see https://github.com/ory/hydra/blob/master/internal/config/config.yaml as a reference
   '`-p <port>:4444`':
     type: port
-    description: Hydra Public API port.
+    description: Expose Hydra Public API port on the host.
   '`-p <port>:4445`':
     type: port
-    description: Hydra Admin API port.
-  '`hydra serve all --config /hydra.yaml`':
+    description: Expose Hydra Admin API port on the host.
+  '`--args hydra -- serve all --config /hydra.yaml`':
     type: other
     description: >
       Launch Hydra web server(s) using a mix of environment variables and the config mounted via volume.
