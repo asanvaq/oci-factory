@@ -11,9 +11,9 @@ source-code: https://github.com/canonical/temporal-rocks
 
 docker:
   parameters: >-
-     - -p 7233:7233
-     - -e SQL_HOST=1.2.3.4
-     - -v /path/to/temporal/config.yaml:/etc/temporal/config/config.yaml
+     -p 7233:7233
+     -e SQL_HOST=1.2.3.4
+     -v /path/to/temporal/config.yaml:/etc/temporal/config/config.yaml
   run_conclusion: |
     Temporal server starts and listens on its configured ports.
 
