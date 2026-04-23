@@ -11,11 +11,12 @@ docker:
   parameters: >-
     -e TZ=UTC
     -p 1234:1234  # http api
+  run_cmd: -d
   run_conclusion: |
-    Access the git-sync HTTP API at http://localhost:1234.
+    Access the git-sync HTTP API at `http://localhost:1234`.
 
 config:
-  '`TZ`':
+  TZ:
     type: env
     description: Sets the timezone for the container runtime.
   '`-p <port>:1234`':
