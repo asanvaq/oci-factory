@@ -8,17 +8,16 @@ issues: https://github.com/canonical/kiali-rock
 source-code: https://github.com/canonical/kiali-rock
 
 docker:
-  run_cmd: --args <named-args>
   parameters: >-
     -e TZ=UTC
     -p 20001:20001
   run_conclusion: |
-    Kiali starts on port 20001.
+    Access the Kiali dashboard at `http://localhost:20001`.
 
 config:
-  '`-e TZ=UTC`':
+  TZ:
     type: env
     description: Timezone setting for the container.
-  '`-p 20001:20001`':
+  '`-p <port>:20001`':
     type: port
-    description: Port mapping for accessing the Kiali UI.
+    description: Expose port 20001 on the host.
