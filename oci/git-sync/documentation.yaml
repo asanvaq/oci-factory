@@ -8,10 +8,7 @@ issues: https://github.com/canonical/git-sync-rock
 source-code: https://github.com/canonical/git-sync-rock
 
 docker:
-  parameters: >-
-    -e TZ=UTC
-    -p 1234:1234  # http api
-  run_cmd: -d
+  parameters: '-p 1234:1234'
   run_conclusion: |
     Access the git-sync HTTP API at `http://localhost:1234`.
 
