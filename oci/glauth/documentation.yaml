@@ -25,7 +25,7 @@ docker:
 config:
   '`-v <path>:/glauth.cfg`':
     type: mount
-    description: >
+    description: >-
       GLAuth config contains all the information needed to successfully configure a basic LDAP
       server, see https://github.com/glauth/glauth/blob/master/v2/sample-simple.cfg as a reference
   '`-p <port>:3893`':
