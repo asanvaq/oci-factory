@@ -16,7 +16,7 @@ docker:
     -p 3000:3000
   run_conclusion: |
     Grafana starts on port 3000.
-    Access the web UI at http://localhost:3000 after running.
+    Access the Grafana web UI at `http://localhost:3000`.
 
 config:
   TZ:
@@ -35,4 +35,4 @@ config:
       each newly launched container.
   '`-p <port>:3000`':
     type: port
-    description: Expose port 3000 on the local host.
+    description: Expose port 3000 on the host.
