@@ -16,11 +16,11 @@ source-code: https://github.com/canonical/glauth-rock
 
 docker:
   parameters: >-
-  -p 3893:3893  # ldap
-  -p 3894:3894  # ldaps
-  -p 5555:5555  # ui and prometheus metrics
+    -p 3893:3893
+    -p 3894:3894
+    -p 5555:5555
   run_conclusion: |
-    GLAuth starts and serves LDAP on port 3893.
+    GLAuth starts and serves LDAP on port `3893`, LDAPS on port `3894`, and UI and metrics on port `5555`.
 
 config:
   '`-v <path>:/glauth.cfg`':
