@@ -30,4 +30,4 @@ config:
     description: Expose OpenTelemetry Collector on localhost:4318.
   '`--args --config <path>`':
     description: Path to the configuration file for OpenTelemetry Collector to use.
-    default: `/etc/otelcol/config.yaml`
+    default: '`/etc/otelcol/config.yaml`'
