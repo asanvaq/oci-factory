@@ -15,7 +15,7 @@ issues: https://github.com/canonical/glauth-rock/issues
 source-code: https://github.com/canonical/glauth-rock
 
 docker:
-parameters: >-
+  parameters: >-
   -p 3893:3893  # ldap
   -p 3894:3894  # ldaps
   -p 5555:5555  # ui and prometheus metrics
