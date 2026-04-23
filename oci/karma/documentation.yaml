@@ -12,9 +12,8 @@ docker:
   parameters: >-
     -e TZ=UTC
     -p 8080:8080
-  run_conclusion: |
-    Karma starts on port 8080.
-    Access the dashboard at http://localhost:8080 after running with a port mapping.
+  run_cmd: -d
+  run_conclusion: Access the Karma dashboard at `http://localhost:8080`.
 
 config:
   TZ:
