@@ -4,7 +4,7 @@ application: litmuschaos-server
 description: |
   Litmuschaos is a chaos testing platform for kubernetes applications. It allows you to define,
   run and monitor 'chaos experiments' that simulate infrastructure failures to verify the stability
-  Read more on the [official documentation](https://litmuschaos.io/).
+  of your applications. Read more on the [official documentation](https://litmuschaos.io/).
   
   This rock deploys the backend component, also known as the 'graphql server'.
 website: https://litmuschaos.io/
@@ -12,18 +12,14 @@ issues: https://github.com/canonical/litmuschaos-server-rock/issues
 source-code: https://github.com/canonical/litmuschaos-server-rock
 
 docker:
-  run_cmd: -d --name mongodb \
-      -e MONGO_INITDB_ROOT_USERNAME=root \
-      -e MONGO_INITDB_ROOT_PASSWORD=password \
-      -p 27017:27017 \
-      mongo:7 \
-      --args <named-args>
+  run_cmd: -d
   parameters: >-
     -p 3000:3000
   run_conclusion: |
-    The server is typically deployed as part of the LitmusChaos platform.
-    Refer to the [official installation guide](https://docs.litmuschaos.io/docs/getting-started/installation)
-    for production deployment instructions.    
+    Before starting, ensure a MongoDB instance is running and set `DB_SERVER`, `DB_USER`, and
+    `DB_PASSWORD` to point to it (e.g. `docker run -d -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=password -p 27017:27017 mongo:7`).
+
+    Access the LitmusChaos server at `http://localhost:3000`.
 
 config:
   VERSION:
@@ -90,4 +86,4 @@ config:
     default: '3030'
   '`-p <port>:3000`':
     type: port
-    description: Expose the backend server on localhost:3000.
+    description: Expose port 3000 on the host.
