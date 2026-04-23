@@ -3,9 +3,6 @@ version: 2
 application: git-sync
 description: >
   Git-sync is a go binary that synchronizes a local clone of a git repository.
-  Please note that this repository holds a rock instead of a Dockerfile-based image.
-  As such, the entrypoint is Pebble.
-  Read more in the [Rockcraft docs](https://documentation.ubuntu.com/rockcraft/latest/).
 website: https://github.com/kubernetes/git-sync
 issues: https://github.com/canonical/git-sync-rock
 source-code: https://github.com/canonical/git-sync-rock
@@ -13,16 +10,14 @@ source-code: https://github.com/canonical/git-sync-rock
 docker:
   parameters: >-
     -e TZ=UTC
-    -p 1234:1234
+    -p 1234:1234  # http api
   run_conclusion: |
-    The container starts git-sync using Pebble.
-    When port mapping is enabled, the git-sync HTTP API is available at http://localhost:1234.
+    Access the git-sync HTTP API at http://localhost:1234.
 
 config:
-  TZ:
+  '`TZ`':
     type: env
     description: Sets the timezone for the container runtime.
-    default: 'UTC'
   '`-p <port>:1234`':
     type: port
     description: Expose port 1234 on the host.
