@@ -8,7 +8,6 @@ source-code: https://github.com/canonical/istio-ztunnel-rock
 
 docker:
   parameters: >-
-    -e TZ=UTC
     -p 15020:15020
   run_conclusion: |
     Ztunnel starts in proxy mode and listens on port 15020.
