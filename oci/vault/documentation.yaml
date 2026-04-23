@@ -11,12 +11,10 @@ issues: https://github.com/canonical/vault-rock/issues
 source-code: https://github.com/canonical/vault-rock
 
 docker:
-  run_cmd: --args <named-args>
   parameters: >-
     -p 8200:8200
   run_conclusion: |
-    Vault starts on port 8200.
-    Access the Vault UI at http://localhost:8200 after running with a port mapping.
+    Access the Vault UI at `http://localhost:8200`.
 
 config:
   '`-v <path>:/vault/config/config.hcl`':
@@ -24,7 +22,7 @@ config:
     description: Mount a custom Vault configuration file.
   '`-p <port>:8200`':
     type: port
-    description: Expose the Vault UI and API on localhost:8200.
-  '`--args -config=/vault/config/config.hcl`':
+    description: Expose the container's port `8200` for Vault UI and API on the host's `<port>`.
+  '`--args vault -- -config=<path>` \;':
     type: app
     description: Start the Vault server with the specified configuration file.
