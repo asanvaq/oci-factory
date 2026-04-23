@@ -21,6 +21,7 @@ docker:
     -p 5555:5555
   run_conclusion: |
     GLAuth starts and serves LDAP on port `3893`, LDAPS on port `3894`, and UI and metrics on port `5555`.
+    Access the LDAP server on `ldap://localhost:3893`.
 
 config:
   '`-v <path>:/glauth.cfg`':
@@ -30,13 +31,13 @@ config:
       server, see https://github.com/glauth/glauth/blob/master/v2/sample-simple.cfg as a reference
   '`-p <port>:3893`':
     type: port
-    description: Expose LDAP port 3893 on the host.
+    description: Expose LDAP port `3893` on the host's `<port>`.
   '`-p <port>:3894`':
     type: port
-    description: Expose LDAPS port 3894 on the host.
+    description: Expose LDAPS port `3894` on the host's `<port>`.
   '`-p <port>:5555`':
     type: port
-    description: Expose UI and metrics port 5555 on the host.
+    description: Expose UI and metrics port `5555` on the host's `<port>`.
   '`--args glauth -- -c /glauth.cfg \;`':
     type: other
     description: Launch GLAuth server with a set config.
