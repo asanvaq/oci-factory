@@ -23,6 +23,6 @@ config:
   '`-p <port>:8200`':
     type: port
     description: Expose the container's port `8200` for Vault UI and API on the host's `<port>`.
-  '`--args vault -- -config=<path>` \\;':
+  '`--args vault -- -config=<path> \;`':
     type: app
     description: Start the Vault server with the specified configuration file.
