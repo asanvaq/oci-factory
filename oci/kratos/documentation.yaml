@@ -1,7 +1,7 @@
 version: 2
 application: kratos
 description: |
-  kratos is the developer-friendly, security-hardened and battle-tested identity,
+  Kratos is the developer-friendly, security-hardened and battle-tested identity,
   User Management and Authentication system for the Cloud.
 
   The identity management server Ory Kratos enables you to implement user management,
@@ -19,10 +19,9 @@ docker:
     -p 4433:4433
     -p 4434:4434
     -v /path/to/Kratos/config.yaml:/kratos.yaml
+  run_cmd: -d
   run_conclusion: |
-    Kratos starts both public and admin APIs.
-    Access the public API at http://localhost:4433 and the admin API at http://localhost:4434.
-    
+    Access the Kratos public API at `http://localhost:4433` and the admin API at `http://localhost:4434`.
 config:
   TRACING_ENABLED:
     type: env
@@ -59,10 +58,10 @@ config:
     description: Kratos config with settings needed to configure it as an OIDC provider. See https://www.ory.sh/docs/kratos/reference/configuration as a reference.
   '`-p <port>:4433`':
     type: port
-    description: Kratos public API port.
+    description: Expose port 4433 on the host.
   '`-p <port>:4434`':
     type: port
-    description: Kratos admin API port.
+    description: Expose port 4434 on the host.
   '`kratos serve all --config /kratos.yaml`':
     type: app
     description: Launch Kratos web servers using environment variables and the mounted config.
