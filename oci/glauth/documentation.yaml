@@ -24,7 +24,7 @@ docker:
     Access the LDAP server on `ldap://localhost:3893`.
 
 config:
-  '`-v <path>:/glauth.cfg`':
+  '`-v <path>:/etc/config/glauth.cfg`':
     type: mount
     description: >-
       GLAuth config contains all the information needed to successfully configure a basic LDAP
@@ -38,6 +38,3 @@ config:
   '`-p <port>:5555`':
     type: port
     description: Expose UI and metrics port `5555` on the host's `<port>`.
-  '`--args glauth -- -c /glauth.cfg \;`':
-    type: other
-    description: Launch GLAuth server with a set config.
