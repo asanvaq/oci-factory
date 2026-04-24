@@ -21,6 +21,9 @@ docker:
 
     Access the LitmusChaos server at `http://localhost:3000`.
 
+    Note that at this point the workload still won't be operational, as it requires the
+    litmuschaos-auth and litmuschaos-frontend components to function.
+
 config:
   VERSION:
     type: env
