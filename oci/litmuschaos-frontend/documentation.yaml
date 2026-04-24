@@ -11,7 +11,6 @@ issues: https://github.com/canonical/litmuschaos-frontend-rock/issues
 source-code: https://github.com/canonical/litmuschaos-frontend-rock
 
 docker:
-  run_cmd: --args <named-args>
   parameters: >-
     -p 8185:8185
   run_conclusion: |
