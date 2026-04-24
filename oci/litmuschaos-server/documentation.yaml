@@ -27,40 +27,40 @@ config:
     description: ID of the running version.
   INFRA_DEPLOYMENTS:
     type: env
-    description: Deployment names for the infra components.
+    description: Deployment names for the infra components, e.g. `["app=chaos-exporter"]`.
   SUBSCRIBER_IMAGE:
     type: env
-    description: Image the chaoscenter uses to deploy the subscriber service.
+    description: Image the chaoscenter uses to deploy the subscriber service, e.g. `litmuschaos/litmusportal-subscriber:ci`.
   EVENT_TRACKER_IMAGE:
     type: env
-    description: Image the chaoscenter uses to deploy the event-tracker service.
+    description: Image the chaoscenter uses to deploy the event-tracker service, e.g. `litmuschaos/litmusportal-event-tracker:ci`.
   ARGO_WORKFLOW_CONTROLLER_IMAGE:
     type: env
-    description: Image the chaoscenter uses to deploy the argo-workflow-controller service.
+    description: Image the chaoscenter uses to deploy the argo-workflow-controller service, e.g. `litmuschaos/workflow-controller:v3.3.1`.
   ARGO_WORKFLOW_EXECUTOR_IMAGE:
     type: env
-    description: Image the chaoscenter uses to deploy the argo-workflow-executor service.
+    description: Image the chaoscenter uses to deploy the argo-workflow-executor service, e.g. `litmuschaos/argoexec:v3.3.1`.
   LITMUS_CHAOS_OPERATOR_IMAGE:
     type: env
-    description: Image the chaoscenter uses to deploy the chaos-operator service.
+    description: Image the chaoscenter uses to deploy the chaos-operator service, e.g. `litmuschaos/chaos-operator:ci`.
   LITMUS_CHAOS_RUNNER_IMAGE:
     type: env
-    description: Image the chaoscenter uses to deploy the chaos-runner service.
+    description: Image the chaoscenter uses to deploy the chaos-runner service, e.g. `litmuschaos/chaos-runner:ci`.
   LITMUS_CHAOS_EXPORTER_IMAGE:
     type: env
-    description: Image the chaoscenter uses to deploy the chaos-exporter service.
+    description: Image the chaoscenter uses to deploy the chaos-exporter service, e.g. `litmuschaos/chaos-exporter:ci`.
   CONTAINER_RUNTIME_EXECUTOR:
     type: env
-    description: Runtime executor.
+    description: Runtime executor, e.g. `k8sapi`.
   WORKFLOW_HELPER_IMAGE_VERSION:
     type: env
-    description: Image version tag for the workflow helper.
+    description: Image version tag for the workflow helper, e.g. `ci`.
   INFRA_COMPATIBLE_VERSIONS:
     type: env
-    description: Image version tag for the infra workloads.
+    description: Image version tag for the infra workloads, e.g. `ci`.
   DEFAULT_HUB_BRANCH_NAME:
     type: env
-    description: Default branch name for GitOps repositories.
+    description: Default branch name for GitOps repositories, e.g. `master`.
   ADMIN_USERNAME:
     type: env
     description: Web UI admin username.
