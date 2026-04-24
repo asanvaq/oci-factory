@@ -13,6 +13,10 @@ docker:
   run_conclusion: Access the Karma dashboard at `http://localhost:8080`.
 
 config:
+  TZ:
+    type: env
+    description: Timezone.
+    default: 'UTC'
   '`-p <port>:8080`':
     type: port
     description: Expose port 8080 on the host.
