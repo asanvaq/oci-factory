@@ -14,9 +14,7 @@ docker:
   parameters: >-
     -p 8185:8185
   run_conclusion: |
-    The frontend is typically deployed as part of the LitmusChaos platform.
-    Refer to the [official installation guide](https://docs.litmuschaos.io/docs/getting-started/installation)
-    for production deployment instructions.
+    Access the frontend server at `http://localhost:8185`.
 
 config:
   '`-p <port>:8185`':
