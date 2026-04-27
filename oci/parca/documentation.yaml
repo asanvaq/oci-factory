@@ -12,11 +12,9 @@ source-code: https://github.com/canonical/parca-rock
 
 docker:
   parameters: >-
-    -e TZ=UTC
+    -p 7070:7070
   run_conclusion: |
-    Parca starts on port 7070.
-    Access your Parca instance at http://localhost:7070 after running with a port mapping, for example:
-    docker run -e TZ=UTC -p 7070:7070 -v /path/to/parca/config.yaml:/etc/parca/parca.yaml ubuntu/parca:latest
+    Access your Parca instance at `http://localhost:7070`.
 
 config:
   TZ:
@@ -28,4 +26,4 @@ config:
     description: Local configuration file for Parca.
   '`-p <port>:7070`':
     type: port
-    description: Expose Parca on localhost:7070.
+    description: Expose the container's port `7070` on the host's `<port>`.
