@@ -13,9 +13,11 @@ docker:
   parameters: >-
     -p 3000:3000
   run_conclusion: |
-    The authserver is typically deployed as part of the LitmusChaos platform.
-    Refer to the [official installation guide](https://docs.litmuschaos.io/docs/getting-started/installation)
-    for production deployment instructions.
+    Before starting, ensure a MongoDB instance is running and set `DB_SERVER`, `DB_USER`, and
+    `DB_PASSWORD` to point to it (e.g. `docker run -d -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=password -p 27017:27017 mongo:7`).
+
+    Access the LitmusChaos server at `http://localhost:3000`.
+
 
 config:
   ADMIN_USERNAME:
@@ -43,4 +45,4 @@ config:
     default: '3030'
   '`-p <port>:3000`':
     type: port
-    description: Expose the authentication server on localhost:3000.
+    description: Exposes the container's port 3000 on the host's `<port>`.
