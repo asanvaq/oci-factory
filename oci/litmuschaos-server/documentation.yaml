@@ -95,5 +95,5 @@ config:
     type: port
     description: >-
       Expose the container's port 3030 on the host's `<port>`.
-      Replace po3030 if any other port is passed to the environmental
+      Replace port 3030 if any other port is passed to the environmental
       variable `GRPC_PORT`.
