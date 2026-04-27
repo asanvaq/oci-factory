@@ -87,13 +87,13 @@ config:
     description: gRPC auth server port, e.g., `3030`.
   '`-p <port>:3000`':
     type: port
-    description: |
+    description: >-
       Expose the container's port 3000 on the host's `<port>`.
       Replace port 3000 if any other port is passed to the environmental
       variable `REST_PORT`.
   '`-p <port>:3030`':
     type: port
-    description: |
+    description: >-
       Expose the container's port 3030 on the host's `<port>`.
       Replace po3030 if any other port is passed to the environmental
       variable `GRPC_PORT`.
